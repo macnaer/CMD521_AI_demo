@@ -1,0 +1,32 @@
+{
+  "people": {
+    "endpoints": ["https://swapi.info/api/people", "https://swapi.info/api/people/{id}"],
+    "count": 83,
+    "fields": ["name", "height", "mass", "hair_color", "skin_color", "eye_color", "birth_year", "gender", "homeworld", "films", "species", "vehicles", "starships"]
+  },
+  "films": {
+    "endpoints": ["https://swapi.info/api/films", "https://swapi.info/api/films/{id}"],
+    "count": 6,
+    "fields": ["title", "episode_id", "opening_crawl", "director", "producer", "release_date", "characters", "planets", "starships", "vehicles", "species"]
+  },
+  "planets": {
+    "endpoints": ["https://swapi.info/api/planets", "https://swapi.info/api/planets/{id}"],
+    "count": 60,
+    "fields": ["name", "rotation_period", "orbital_period", "diameter", "climate", "gravity", "terrain", "surface_water", "population", "residents", "films"]
+  },
+  "species": {
+    "endpoints": ["https://swapi.info/api/species", "https://swapi.info/api/species/{id}"],
+    "count": 37,
+    "fields": ["name", "classification", "designation", "average_height", "skin_colors", "hair_colors", "eye_colors", "average_lifespan", "homeworld", "language", "people", "films"]
+  },
+  "vehicles": {
+    "endpoints": ["https://swapi.info/api/vehicles", "https://swapi.info/api/vehicles/{id}"],
+    "count": 39,
+    "fields": ["name", "model", "manufacturer", "cost_in_credits", "length", "max_atmosphering_speed", "crew", "passengers", "cargo_capacity", "consumables", "vehicle_class", "pilots", "films"]
+  },
+  "starships": {
+    "endpoints": ["https://swapi.info/api/starships", "https://swapi.info/api/starships/{id}"],
+    "count": 36,
+    "fields": ["name", "model", "manufacturer", "cost_in_credits", "length", "max_atmosphering_speed", "crew", "passengers", "cargo_capacity", "consumables", "hyperdrive_rating", "MGLT", "starship_class", "pilots", "films"]
+  }
+}

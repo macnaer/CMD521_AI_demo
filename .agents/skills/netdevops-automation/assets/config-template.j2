@@ -1,0 +1,17 @@
+{# OSPF Interface Configuration Template #}
+{# Variables: interface, area, passive (bool), cost (optional) #}
+
+interface {{ interface }}
+{% if description is defined %}
+  description {{ description }}
+{% endif %}
+  ip ospf 1 area {{ area }}
+{% if passive %}
+  ip ospf passive
+{% endif %}
+{% if cost is defined %}
+  ip ospf cost {{ cost }}
+{% endif %}
+{% if mtu is defined %}
+  ip mtu {{ mtu }}
+{% endif %}

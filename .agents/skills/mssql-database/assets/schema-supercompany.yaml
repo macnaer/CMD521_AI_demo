@@ -1,0 +1,38 @@
+---
+name: SuperCompany
+databases:
+  - name: SuperCompany
+    server: ${DB_IP}
+    port: 1433
+    user: ${DB_USER}
+    password: ${DB_PASSWORD}
+tables:
+  - name: Users
+    columns:
+      - name: UsersID
+        type: INT
+        nullable: false
+        identity: true
+        primary_key: true
+      - name: id
+        type: UNIQUEIDENTIFIER
+        nullable: true
+      - name: name
+        type: VARCHAR(255)
+        nullable: true
+      - name: surname
+        type: VARCHAR(255)
+        nullable: true
+      - name: email
+        type: VARCHAR(255)
+        nullable: true
+      - name: country
+        type: VARCHAR(100)
+        nullable: true
+      - name: city
+        type: VARCHAR(255)
+        nullable: true
+      - name: salary
+        type: INT
+        nullable: true
+    row_count: 1000

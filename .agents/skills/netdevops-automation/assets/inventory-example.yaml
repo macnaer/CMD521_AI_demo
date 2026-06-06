@@ -1,0 +1,59 @@
+---
+# Example device inventory — no credentials, use env vars at runtime
+devices:
+  rtr-core01:
+    hostname: rtr-core01.lab.local
+    platform: cisco_ios
+    ip_address: 10.0.0.1
+    port: 22
+    group: core
+
+  rtr-core02:
+    hostname: rtr-core02.lab.local
+    platform: cisco_ios
+    ip_address: 10.0.0.2
+    port: 22
+    group: core
+
+  sw-access01:
+    hostname: sw-access01.lab.local
+    platform: cisco_nxos
+    ip_address: 10.0.1.1
+    port: 22
+    group: access
+
+  sw-leaf01:
+    hostname: sw-leaf01.lab.local
+    platform: arista_eos
+    ip_address: 10.0.2.1
+    port: 443
+    group: leaf
+
+  rtr-junos01:
+    hostname: rtr-junos01.lab.local
+    platform: juniper_junos
+    ip_address: 10.0.3.1
+    port: 22
+    group: pe
+
+groups:
+  core:
+    username: ${NET_USER}
+    connection_options:
+      netmiko:
+        device_type: cisco_ios
+  access:
+    username: ${NET_USER}
+    connection_options:
+      netmiko:
+        device_type: cisco_nxos
+  leaf:
+    username: ${NET_USER}
+    connection_options:
+      napalm:
+        driver: eos
+  pe:
+    username: ${NET_USER}
+    connection_options:
+      napalm:
+        driver: junos
