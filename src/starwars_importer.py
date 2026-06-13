@@ -973,7 +973,28 @@ def ensure_ready_for_import() -> bool:
     return True
 
 
+def run_auto() -> int:
+    log.info("=== AUTO MODE: create DB + import all ===")
+    print(f"Connected to MSSQL {DB_IP}:{DB_PORT} as {DB_USER}")
+    print(f"Log file: {LOG_FILE}")
+    try:
+        create_database(DB_NAME)
+        create_schema()
+        print(f"  Database [{DB_NAME}] and tables are ready.")
+        import_all()
+        log.info("=== AUTO MODE: all done ===")
+        print("  All imports complete.")
+        return 0
+    except Exception as e:
+        log.error("AUTO MODE failed: %s", e)
+        print(f"  Error: {e}")
+        return 1
+
+
 def main() -> int:
+    if "--auto" in sys.argv:
+        return run_auto()
+
     print(f"Connected to MSSQL {DB_IP}:{DB_PORT} as {DB_USER}")
     print(f"Log file: {LOG_FILE}")
     while True:
