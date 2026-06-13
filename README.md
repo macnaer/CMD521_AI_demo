@@ -36,6 +36,8 @@ CMD521_AI_demo/
 ├── logs/                           # Runtime logs (gitignored)
 ├── .env                            # DB credentials (gitignored)
 ├── .env.example                    # Example env vars
+├── .dockerignore                   # Docker build exclusions
+├── Dockerfile                      # Container image definition
 ├── .gitignore
 ├── requirements.txt                # Python dependencies
 ├── AGENTS.md                       # Agent conventions and rules
@@ -83,7 +85,31 @@ Interactive menu — 18 options:
  8. Import: ALL
 ```
 
-### 4. Use the skills
+### 4. Docker
+
+```bash
+# Build
+docker build -t macnaer/convertor .
+
+# Run in auto mode (create DB + import all, then exit)
+docker run -d --restart=always \
+  -e DB_IP=10.20.42.103 \
+  -e DB_USER=sa \
+  -e DB_PASSWORD="Qwerty-1" \
+  macnaer/convertor
+
+# Interactive mode (menu)
+docker run -it --rm \
+  -e DB_IP=10.20.42.103 \
+  -e DB_USER=sa \
+  -e DB_PASSWORD="Qwerty-1" \
+  macnaer/convertor \
+  python src/starwars_importer.py
+```
+
+Auto mode (`--auto`) creates the database, all tables, imports all 6 SWAPI resources + junction tables, and exits.
+
+### 5. Use the skills
 
 ```bash
 # Fetch all SWAPI data to JSON
